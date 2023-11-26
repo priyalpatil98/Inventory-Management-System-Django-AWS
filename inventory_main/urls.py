@@ -16,10 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from user import views as user_view
+from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
     #Route to urls from dashboard.urls.py file
-    path('', include('dashboard.urls'))
-]
+    path('', include('dashboard.urls')),
+
+    #Route to urls from users.urls.py file- User Registration Page
+    path('register/', user_view.register, name='user-register'),
+
+    #Route to urls from users.urls.py file- Login Page at start of application
+    path('', auth_views.LoginView.as_view(template_name='user/login.html'), name='user-login'),
+
+    #Route to urls from users.urls.py file- Logout Page
+    path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='user-logout'),
+
+    #Route to urls from users.urls.py file- Profile page
+    path('profile/', user_view.profile, name='user-profile'),
+
+    #Route to urls from users.urls.py file- Profile-Update page
+    path('profile/update/', user_view.profile_update, name='user-profile-update'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
