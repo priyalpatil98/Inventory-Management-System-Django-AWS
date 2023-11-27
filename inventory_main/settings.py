@@ -79,10 +79,22 @@ WSGI_APPLICATION = 'inventory_main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', #Integrated Amazon RDS MySQL into Django and replaced default sqllite3 database 
+        'NAME': 'inventorydb',
+        'USER': 'admin',
+        'PASSWORD': 'India#2345$',
+        'HOST': 'x22209573hfainventorydb.chwlezgyi7rm.eu-west-1.rds.amazonaws.com', # Amazon RDS Host Public Address
+        'PORT': 3306,
     }
 }
+
+# Default SQLite3 configuration
+# { 
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 
 # Password validation
