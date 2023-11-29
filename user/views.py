@@ -3,12 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
 
+
 def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get('username')
+            form.save()
             messages.success(request, f'Account has been created for { username } Successfully! Please Continue to Log in')
             return redirect('user-login')
     else:

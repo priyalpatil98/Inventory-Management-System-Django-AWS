@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig', #Users App Registered
     'crispy_forms', #Styling User Registeration Form
     'crispy_bootstrap4',
+    'storages', # For using AWS S3
 ]
 
 MIDDLEWARE = [
@@ -159,4 +160,5 @@ AWS_S3_REGION_NAME = 'eu-west-1' #S3 Bucket Region
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' #Boto3 client used to use S3 storage instead of Django local storage
