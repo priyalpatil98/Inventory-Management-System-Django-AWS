@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'inventory_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+ 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', #Integrated Amazon RDS MySQL into Django and replaced default sqllite3 database 
@@ -154,9 +155,10 @@ LOGIN_REDIRECT_URL = 'dashboard-index'
 
 AWS_ACCESS_KEY_ID = 'AKIA23MBQHACBWSQXTNI'
 AWS_SECRET_ACCESS_KEY = 'fHR1RjD8blxyuaLT77RQ26EC2l67wEJ33yg2dSE5'
-AWS_STORAGE_BUCKET_NAME = 'x22209573-cpp-project' #S3 Bucket
-AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_REGION = 'eu-west-1' #S3 Bucket Region
 AWS_S3_REGION_NAME = 'eu-west-1' #S3 Bucket Region
+AWS_STORAGE_BUCKET_NAME = 'x22209573-cpp-project' #S3 Bucket
+AWS_S3_SIGNATURE_NAME = 's3v4'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
