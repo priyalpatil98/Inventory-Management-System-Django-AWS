@@ -1,12 +1,12 @@
 asgiref==3.7.2
-awscli==1.24.10
+awscli==1.25.1
 awsebcli==3.20.5
 boto3
 botocore
 cement==2.8.2
 certifi==2023.7.22
 cffi==1.16.0
-charset-normalizer==3.3.2
+charset-normalizer
 colorama==0.4.3
 crispy-bootstrap4==2023.1
 cryptography==41.0.5
@@ -17,7 +17,6 @@ django-crispy-forms==2.1
 django-ses==3.5.1
 django-storages==1.14.2
 docutils==0.16
-idna==3.4
 jmespath==1.0.1
 oauthlib==3.2.2
 pathspec>=0.10.1
