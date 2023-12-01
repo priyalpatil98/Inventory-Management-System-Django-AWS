@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from .cred import get_secret
+from .logs import log_activity
+
+log_activity() #Calling CloudTrail Function
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +29,7 @@ SECRET_KEY = 'django-insecure-&ign@k70phz7dcm60#6s7$@+%ng*pdqm4f!j^sb1=fekzv@v(+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,15 +82,16 @@ WSGI_APPLICATION = 'inventory_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+secret_dict = get_secret() # Calling AWS Secrets Manager for DB Credentials
  
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', #Integrated Amazon RDS MySQL into Django and replaced default sqllite3 database 
-        'NAME': 'inventorydb',
-        'USER': 'admin',
-        'PASSWORD': 'India#2345$',
-        'HOST': 'x22209573hfainventorydb.chwlezgyi7rm.eu-west-1.rds.amazonaws.com', # Amazon RDS Host Public Address
-        'PORT': 3306,
+        'ENGINE': 'django.db.backends.'+ secret_dict['engine'], #Integrated Amazon RDS MySQL into Django and replaced default sqllite3 database 
+        'NAME': secret_dict['dbname'],
+        'USER': secret_dict['username'],
+        'PASSWORD': secret_dict['password'],
+        'HOST': secret_dict['host'], # Amazon RDS Host Public Address
+        'PORT': secret_dict['port'],
     }
 }
 
@@ -155,7 +160,7 @@ LOGIN_REDIRECT_URL = 'dashboard-index'
 
 AWS_ACCESS_KEY_ID = 'AKIA23MBQHACBWSQXTNI'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_REGION = 'eu-west-1' #S3 Bucket Region
+AWS_REGION = 'eu-west-1'
 AWS_S3_REGION_NAME = 'eu-west-1' #S3 Bucket Region
 AWS_STORAGE_BUCKET_NAME = 'x22209573-cpp-project' #S3 Bucket
 AWS_S3_SIGNATURE_NAME = 's3v4'
@@ -164,3 +169,5 @@ AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' #Boto3 client used to use S3 storage instead of Django local storage
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

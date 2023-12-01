@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .order_sns import send_order_email
 
 # Drop down list for Categories section of App
 CATEGORY = (
@@ -28,3 +29,7 @@ class Order(models.Model):
 
     def __str__(self):
         return f'{self.product} ordered by {self.staff.username}'
+    
+    def send_confirmation_email(self):
+        print(self.email)
+        send_order_email(self.email)

@@ -19,6 +19,7 @@ def index(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.staff = request.user
+            Order.send_confirmation_email(instance.staff)
             instance.save()
             return redirect('dashboard-index')
     else:
@@ -75,7 +76,7 @@ def product(request):
     }
     return render(request, 'dashboard/product.html', context)
 
-#Deleting Orders Page
+#Deleting Product Page
 @login_required(login_url='user-login')
 def product_delete(request, pk):
     item = Product.objects.get(id=pk)
@@ -85,7 +86,7 @@ def product_delete(request, pk):
         return redirect('dashboard-product')
     return render(request, 'dashboard/product_delete.html')
 
-#Editing Orders Page
+#Editing Product Page
 @login_required(login_url='user-login')
 def product_update(request, pk):
     item = Product.objects.get(id=pk)
