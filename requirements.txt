@@ -1,7 +1,7 @@
 asgiref==3.7.2
-awscli==1.31.2
-awsebcli==3.20.10
-boto3==1.33.2
+awscli
+awsebcli
+boto3
 botocore
 cement==2.8.2
 certifi==2023.7.22
