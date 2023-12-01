@@ -1,6 +1,6 @@
 asgiref==3.7.2
 awscli
-awsebcli
+awsebcli==3.20.0
 boto3
 botocore
 cement==2.8.2
