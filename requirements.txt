@@ -20,7 +20,7 @@ docutils==0.16
 idna==3.4
 jmespath==1.0.1
 oauthlib==3.2.2
-pathspec==0.5.9
+pathspec>=0.10.1
 Pillow==10.1.0
 pyasn1==0.5.1
 pycparser==2.21
