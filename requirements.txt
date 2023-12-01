@@ -1,5 +1,5 @@
 asgiref==3.7.2
-awscli
+awscli==1.29.30
 awsebcli==3.20.5
 boto3
 botocore
