@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-&ign@k70phz7dcm60#6s7$@+%ng*pdqm4f!j^sb1=fekzv@v(+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cppinventory-env.eba-2zfyfafg.eu-west-1.elasticbeanstalk.com', '127.0.0.1']
+ALLOWED_HOSTS = ['cppproj1env.eba-x9agyz8q.eu-west-1.elasticbeanstalk.com', '127.0.0.1']
 
 
 # Application definition
