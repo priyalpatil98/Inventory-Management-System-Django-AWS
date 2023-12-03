@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .order_sns import send_order_email
+#from .order_sns import send_order_email  # Old implementation before creating my library
+from django_aws_integrate.order_sns import send_order_email #Calling SNS service from my own library
 
 # Drop down list for Categories section of App
 CATEGORY = (
@@ -8,6 +9,7 @@ CATEGORY = (
     ('Bricks', 'Bricks'),
     ('Tools', 'Tools'),
     ('Paint', 'Paint'),
+    ('Sand', 'Sand')
 )
 
 # Product Table of DB

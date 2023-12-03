@@ -21,6 +21,7 @@ def index(request):
             instance.staff = request.user
             Order.send_confirmation_email(instance.staff)
             instance.save()
+            messages.success(request, f'Order has been placed successfully! Email has been sent to Admin.') #Flash Message
             return redirect('dashboard-index')
     else:
         form = OrderForm()
@@ -82,7 +83,7 @@ def product_delete(request, pk):
     item = Product.objects.get(id=pk)
     if request.method == 'POST':
         item.delete()
-        messages.warning(request, f'Item has been deleted successfully!') #Flash Message
+        messages.warning(request, f'Product has been deleted successfully!') #Flash Message
         return redirect('dashboard-product')
     return render(request, 'dashboard/product_delete.html')
 
@@ -94,7 +95,7 @@ def product_update(request, pk):
         form = ProductForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Item has been Edited successfully!') #Flash Message
+            messages.success(request, f'Product has been updated successfully!') #Flash Message
             return redirect('dashboard-product')
     else:
         form = ProductForm(instance=item)

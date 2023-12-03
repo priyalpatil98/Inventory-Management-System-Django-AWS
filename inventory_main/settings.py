@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from .cred import get_secret
-from .logs import log_activity
+from django_aws_integrate.cred import get_secret #Calling AWS Secrets manager service from my own library
+from django_aws_integrate.logs import log_activity #Calling AWS Cloud trail service from my own library
+#from .cred import get_secret # Old implementation before creating my library
+#from .logs import log_activity ## Old implementation before creating my library
 
 log_activity() #Calling CloudTrail Function
 
